@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>RÉPLICA — MAQUINÁRIO</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23efe7d8'/%3E%3Cpath d='M16 4 27 10 27 22 16 28 5 22 5 10Z' fill='none' stroke='%236e4a2e' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+<div class="hud-top">
+  <a class="back-link" href="../../index.html">← MAQUINÁRIO</a>
+  <span class="game-title">RÉPLICA</span>
+  <div class="hud-stats">
+    <span id="hud-level">Nível 1</span>
+    <span id="hud-lives"></span>
+    <span id="hud-score">0</span>
+  </div>
+</div>
+
+<div class="stage">
+  <canvas id="cube-canvas"></canvas>
+
+  <div class="phase-banner" id="phase-banner">Memorize!</div>
+
+  <svg class="timer-ring" id="timer-ring" viewBox="0 0 44 44">
+    <circle class="track" cx="22" cy="22" r="19"></circle>
+    <circle class="fill" id="timer-ring-fill" cx="22" cy="22" r="19"></circle>
+  </svg>
+
+  <div class="hint" id="hint">toque num bloco para remover</div>
+</div>
+
+<div class="hud-bottom">
+  <button class="btn" id="btn-reset-view">Reiniciar visão</button>
+  <button class="btn" id="btn-reset-attempt" disabled>Redefinir</button>
+  <button class="btn btn-primary" id="btn-confirm" disabled>Confirmar</button>
+</div>
+
+<!-- modal: início -->
+<div class="modal-overlay" id="modal-start">
+  <div class="modal">
+    <p class="modal-eyebrow">Jogo 1</p>
+    <h2>RÉPLICA</h2>
+    <div class="rules">
+      <b>1.</b> O cubo aparece completo, depois algumas peças somem — isso é o padrão.<br>
+      <b>2.</b> Memorize onde estão os buracos antes que o cubo volte a ficar inteiro.<br>
+      <b>3.</b> Toque nas peças certas para removê-las e confirme. Errou o caminho? Use "Redefinir" antes de confirmar. Nos 3 primeiros níveis o cubo fica parado; depois dá para girar.<br>
+      <b>4.</b> Errar custa uma vida. Acertar avança de nível.
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="btn-start">Começar</button>
+    </div>
+  </div>
+</div>
+
+<!-- modal: fim de jogo -->
+<div class="modal-overlay hidden" id="modal-gameover">
+  <div class="modal">
+    <p class="modal-eyebrow">Fim de jogo</p>
+    <h2 id="gameover-title">Sem vidas</h2>
+    <div class="score-line" id="final-score">0</div>
+    <p>nível alcançado: <span id="final-level">1</span></p>
+    <div class="actions">
+      <button class="btn btn-primary" id="btn-retry">Jogar novamente</button>
+      <a class="btn" href="../../index.html">Voltar ao hub</a>
+    </div>
+  </div>
+</div>
+
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+/* ==========================================================================
+   MAQUINÁRIO — tokens compartilhados
+   ========================================================================== */
+
+:root {
+  /* ---- fundo e superfícies (do mais claro/distante ao mais "sobre a mesa") ---- */
+  --bg: #0d0d0d;                  /* fundo geral */
+  --bg-elevated: #171717;         /* palco / área principal */
+  --panel: #1e1e1e;               /* cartões, modais e botões */
+  --panel-border: #383838;        /* bordas padrão */
+  --panel-border-strong: #8f1d2c; /* borda em hover/foco */
+
+  /* ---- texto ---- */
+  --ink: #f2f2f2;                 /* texto principal */
+  --ink-dim: #b8b8b8;             /* texto secundário */
+  --ink-faint: #777777;           /* textos pequenos */
+
+  /* ---- cor de destaque da interface (links, botão principal, foco) ---- */
+  --accent: #b90909;
+  --accent-soft: rgba(43, 143, 224, 0.12);  /* fundo suave com a cor de destaque */
+  --accent-line: rgba(62, 107, 143, 0.35);  /* borda suave com a cor de destaque */
+
+  /* ---- cores de feedback (acerto / aviso / erro) usadas nos textos e no jogo ---- */
+  --success: #5b8c4c;
+  --success-soft: rgba(91, 140, 76, 0.14);
+  --danger: #c24b3f;
+  --warn: #c98a2e;
+
+  /* Nota: a cor dos BLOCOS do cubo 3D não está aqui — ela é desenhada em
+     WebGL (three.js) e fica em games/replica/game.js, na constante
+     COLOR_WOOD, logo no topo do arquivo. */
+
+  --font-display: 'Baloo 2', ui-rounded, sans-serif;       /* títulos e números grandes */
+  --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif; /* texto corrido */
+
+  --radius: 16px;      /* cantos arredondados de cartões/modais/palco */
+  --radius-sm: 10px;   /* cantos arredondados de blocos internos menores */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100%;
+}
+
+a { color: inherit; text-decoration: none; }
+
+
+button { font-family: var(--font-body); cursor: pointer; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ==========================================================================
+   Hub page
+   ========================================================================== */
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 22px clamp(20px, 5vw, 56px);
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.topbar-sub {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.hero {
+  padding: clamp(48px, 10vw, 96px) clamp(20px, 5vw, 56px) clamp(32px, 6vw, 64px);
+  max-width: 760px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4.6vw, 46px);
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.hero h1 .highlight { color: var(--accent); }
+
+.hero .lede {
+  color: var(--ink-dim);
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 52ch;
+  margin: 0;
+}
+
+.modules {
+  padding: 0 clamp(20px, 5vw, 56px) clamp(64px, 10vw, 96px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1120px;
+}
+
+.module-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(46, 42, 34, 0.03);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.module-card.active { cursor: pointer; }
+
+.module-card.active:hover,
+.module-card.active:focus-visible {
+  border-color: var(--panel-border-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(46, 42, 34, 0.10);
+}
+
+.module-card.active:hover .module-cta,
+.module-card.active:focus-visible .module-cta {
+  color: var(--accent);
+}
+
+.module-art {
+  height: 148px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.module-art svg { width: 78px; height: 78px; }
+
+.module-art.hazard {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(46, 42, 34, 0.03) 0 10px,
+    transparent 10px 20px
+  ), var(--bg-elevated);
+}
+
+.module-body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.module-index {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.module-body h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  margin: 0;
+}
+
+.module-body p {
+  color: var(--ink-dim);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 2px 0 6px;
+}
+
+.module-cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-dim);
+  transition: color 0.2s ease;
+}
+
+.module-card.locked { opacity: 0.6; }
+.module-card.locked .module-body h2 { color: var(--ink-dim); }
+
+footer {
+  padding: 22px clamp(20px, 5vw, 56px) 40px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--panel-border);
+}

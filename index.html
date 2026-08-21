@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAQUINÁRIO — hub de minijogos</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23efe7d8'/%3E%3Cpath d='M16 4 27 10 27 22 16 28 5 22 5 10Z' fill='none' stroke='%236e4a2e' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <span class="brand">MAQUINÁRIO</span>
+  <span class="topbar-sub">hub de minijogos</span>
+</div>
+
+<section class="hero">
+  <h1>Memorize o padrão.<br><span class="highlight">Replique</span> antes que ele suma.</h1>
+  <p class="lede">
+    Cada módulo aqui dentro é um minijogo independente, sem conta e sem instalação.
+    O primeiro já está pronto: um cubo de blocos que desaparece da tela — e da sua memória.
+  </p>
+</section>
+
+<section class="modules">
+
+  <a class="module-card active" href="games/replica/index.html">
+    <div class="module-art">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M50 48 88 28 88 72 50 92Z" fill="#d8b98c" stroke="#6e4a2e" stroke-width="2"/>
+        <path d="M50 48 12 28 12 72 50 92Z" fill="#c3a172" stroke="#6e4a2e" stroke-width="2"/>
+        <path d="M50 8 88 28 50 48 12 28Z" fill="#ecdcc0" stroke="#6e4a2e" stroke-width="2"/>
+        <path d="M50 48 50 92" stroke="#6e4a2e" stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>
+        <path d="M20 60 40 71" stroke="#c98a2e" stroke-width="2" stroke-dasharray="2.5 3.5"/>
+      </svg>
+    </div>
+    <div class="module-body">
+      <span class="module-index">Jogo 1 — disponível</span>
+      <h2>RÉPLICA</h2>
+      <p>Memorize as peças que faltam no cubo antes que a imagem suma. Depois, reconstrua o padrão de cabeça.</p>
+      <span class="module-cta">Jogar →</span>
+    </div>
+  </a>
+
+  <div class="module-card locked" aria-disabled="true">
+    <div class="module-art hazard"></div>
+    <div class="module-body">
+      <span class="module-index">Jogo 2</span>
+      <h2>Em construção</h2>
+      <p>Próximo módulo ainda na bancada.</p>
+    </div>
+  </div>
+
+  <div class="module-card locked" aria-disabled="true">
+    <div class="module-art hazard"></div>
+    <div class="module-body">
+      <span class="module-index">Jogo 3</span>
+      <h2>Em construção</h2>
+      <p>Reservado para o próximo minijogo.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>MAQUINÁRIO — hub pessoal de minijogos.</footer>
+
+</body>
+</html>
